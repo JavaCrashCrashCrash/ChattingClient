@@ -13,7 +13,7 @@ public class ListeningThread implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        
             String inputMessage = null;
             try {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -22,6 +22,6 @@ public class ListeningThread implements Runnable {
                 e.printStackTrace();
             }
             System.out.println("Sever : " + inputMessage);
-        }
+        
     }
 }
