@@ -13,23 +13,12 @@ public class Client {
 		Socket socket = null;
 		Scanner scanner = new Scanner(System.in);
 		try {
-			socket = new Socket("172.30.1.59", 9999);
-			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			while (true) {
-				System.out.println("Send >> ");
-				String outputMessage = scanner.nextLine();
-				if (outputMessage.equalsIgnoreCase("Bye")) {
-					out.write(outputMessage + "\n");
-					out.flush();
-					break;
-				}
-				out.write(outputMessage + "\n");
-				out.flush();
-				String inputMessage = in.readLine();
-				System.out.println("Sever : " + inputMessage);
+			socket = new Socket("localhost", 9999);
+			ListeningThread listeningThread = new ListeningThread(socket);
+			WritingThread writingThread = new WritingThread(socket);
 
-			}
+			listeningThread.run();
+			writingThread.run();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} finally {
