@@ -14,20 +14,21 @@ public class Client {
 			socket = new Socket("172.30.1.56", 9999);
 			ListeningThread listeningThread = new ListeningThread(socket);
 			WritingThread writingThread = new WritingThread(socket);
+			System.out.println("Connected!!");
+			listeningThread.start();
+			writingThread.start();
 
-			listeningThread.run();
-			writingThread.run();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			try {
-				scanner.close();
-				if (socket != null) {
-					socket.close();
-				}
-			} catch (IOException e) {
-				System.out.println("Error is occured");
-			}
+//			try {
+//				scanner.close();
+//				if (socket != null) {
+//					socket.close();
+//				}
+//			} catch (IOException e) {
+//				System.out.println("Error is occured");
+//			}
 		}
 	}
 }
