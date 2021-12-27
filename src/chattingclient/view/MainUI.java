@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 public class MainUI extends JFrame {
 	Font f1;
 
-	MainUI() {
+	public MainUI() {
 
 		f1 = new Font("바탕", Font.PLAIN, 15);
 
