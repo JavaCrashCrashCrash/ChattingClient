@@ -18,7 +18,7 @@ public class ListeningThread extends Thread {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 while (true) {
                     inputMessage = in.readLine();
-                    System.out.println("Sever : " + inputMessage);
+                    System.out.println("Server : " + inputMessage);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
